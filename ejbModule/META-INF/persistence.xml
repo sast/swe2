@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+	<persistence-unit name="swe1Persistence">
+
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+		<jta-data-source>java:/webshopDS</jta-data-source>
+		
+		<!-- JPA 2.0: Bean Validation innerhalb des OR-Mappers abschalten,
+		     da im Anwendungskern und im UI bereits validiert wird -->
+		<validation-mode>NONE</validation-mode>
+		
+		<properties>
+			<!-- Keine proprietaeren Erweiterungen von HQL nutzen -->
+			<property name="hibernate.query.jpaql_strict_compliance" value="true"/>
+
+			<!-- In der Log-Datei die SQL-Anweisungen lesbarer rausschreiben -->
+			<property name="hibernate.format_sql" value="true"/>
+
+			<!-- In der Log-Datei auch Kommentare zu den generierten SQL-Anweisungen hinzufuegen -->
+			<property name="hibernate.use_sql_comments" value="true"/>
+			
+			<!-- Batch fuer DML von automatisch versionierten Datensaetzen -->
+			<property name="hibernate.jdbc.batch_versioned_data" value="true"/>
+			
+			<!-- Caching mit Hashtable: ungeeignet fuer Produktion -->
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider"/>
+			
+			<!-- Falls Infinispan statt HashtableCache, dann read-write aendern in transactional -->
+<!--			<property name="hibernate.ejb.classcache.de.swe1.kundenverwaltung.domain.AbstractKunde" value="read-write, /kunden"/>
+			<property name="hibernate.ejb.collectioncache.de.swe1.kundenverwaltung.domain.AbstractKunde.bestellungen" value="read-write, /bestellungen"/>
+			<property name="hibernate.ejb.classcache.de.swe1.bestellverwaltung.domain.Bestellung" value="read-write, /bestellungen"/>
+			<property name="hibernate.ejb.classcache.de.swe1.bestellverwaltung.domain.Lieferung" value="read-write, /bestellungen"/>
+-->
+
+			<!-- Nur notwendig, falls HSQLDB als In-Memory Datenbank genutzt wird
+			<property name="hibernate.default_schema" value="SWE1"/>
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			-->
+		</properties>
+	</persistence-unit>
+</persistence>

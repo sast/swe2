@@ -1,0 +1,113 @@
+accept=application/xml
+
+### GET
+http://localhost:8080/webshopREST/benutzerverwaltung/benutzer/2 --> OK
+
+http://localhost:8080/webshopREST/benutzerverwaltung/benutzer --> OK
+http://localhost:8080/webshopREST/benutzerverwaltung/benutzer?nachname=sauer  -->  OK (das Attribute nachname kommt als 'sauer?' an, warum?, weil im WebServiceTester dieser als paramvalue angegeben werden muss!!
+
+http://localhost:8080/webshopREST/benutzerverwaltung/benutzer/2/bestellungen --> OK
+http://localhost:8080/webshopREST/benutzerverwaltung/benutzer/bestellungen?nachname=sauer --> OK
+
+http://localhost:8080/webshopREST/benutzerverwaltung/adresse/67368/benutzer --> OK
+
+http://localhost:8080/webshopREST/benutzerverwaltung/rolle/KUNDE/benutzer --> OK
+http://localhost:8080/webshopREST/benutzerverwaltung/rolle/ADMINISTRATOR/benutzer --> OK
+
+http://localhost:8080/webshopREST/benutzerverwaltung/benutzer/sast1011@hs-karlsruhe.de --> OK
+
+http://localhost:8080/webshopREST/benutzerverwaltung/produktbewertung/1 --> OK
+
+http://localhost:8080/webshopREST/benutzerverwaltung/rollehasbenutzer/2 --> OK
+
+http://localhost:8080/webshopREST/benutzerverwaltung/produktbewertungen --> OK
+
+http://localhost:8080/webshopREST/benutzerverwaltung/produktbewertungen?idbenutzer=2 --> OK
+
+http://localhost:8080/webshopREST/benutzerverwaltung/produktbewertungen?idartikel=2 --> OK
+
+http://localhost:8080/webshopREST/benutzerverwaltung/produktbewertungen?idbenutzer=2&idartikel=2 --> geht nicht, wegen inkonsistenter DB-Eintraege
+
+### (C)REATE / (U)PDATE / (D)ELETE 
+
+http://localhost:8080/webshopREST/benutzerverwaltung/benutzer --> OK (C & U)
+http://localhost:8080/webshopREST/benutzerverwaltung/benutzer/20 --> OK (D)
+
+http://localhost:8080/webshopREST/benutzerverwaltung/produktbewertung --> OK (C)
+http://localhost:8080/webshopREST/benutzerverwaltung/produktbewertung/1 --> OK (D)
+
+http://localhost:8080/webshopREST/benutzerverwaltung/benutzer/2/rolle --> OK (C)
+http://localhost:8080/webshopREST/benutzerverwaltung/rollehasbenutzer/20 --> OK (D)
+
+### CREATE --> POST
+<lieferadresse>
+<plz>66666</plz>
+<ort>Ost-Berlin</ort>
+<strasse>Lenin-Str.</strasse>
+<hausnummer>1</hausnummer>
+<name>Schweiﬂ</name>
+<vorname>Axel</vorname>
+</lieferadresse>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<benutzer>
+<rechnungsadresse>
+<plz>67368</plz>
+<ort>Westheim</ort>
+<strasse>Nachtigallenweg</strasse>
+<hausnummer>9</hausnummer>
+</rechnungsadresse>
+<email>axel1011@hs-karlsruhe.de</email>
+<vorname>Udo</vorname>
+<nachname>Mueller</nachname>
+<kontonummer>1000000</kontonummer>
+<bankleitzahl>60009090</bankleitzahl>
+<passwort>webshop</passwort>
+<passwortWdh>webshop</passwortWdh>
+<newsletter>true</newsletter>
+</benutzer>
+
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?> 
+<benutzer>
+  <rechnungsadresse>
+    <plz>67368</plz> 
+    <ort>Westheim</ort> 
+    <strasse>Nachtigallenweg</strasse> 
+    <hausnummer>13</hausnummer> 
+  </rechnungsadresse>
+  <email>max.muster@hs-karlsruhe.de</email> 
+  <vorname>Max</vorname> 
+  <nachname>Muster</nachname> 
+  <kontonummer>1000</kontonummer> 
+  <bankleitzahl>2000</bankleitzahl> 
+  <passwort>webshop</passwort> 
+  <newsletter>70</newsletter>  
+</benutzer>
+
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?> 
+<benutzer id="2">
+  <rechnungsadresse id="1">
+    <plz>67368</plz> 
+    <ort>Westheim</ort> 
+    <strasse>Nachtigallenweg</strasse> 
+    <hausnummer>13</hausnummer> 
+  </rechnungsadresse>
+  <lieferadresse id="4">
+    <plz>88888</plz> 
+    <ort>Berlin</ort> 
+    <strasse>DDR-Str.</strasse> 
+    <hausnummer>100</hausnummer> 
+    <name>Zufall</name> 
+    <vorname>Rainer</vorname> 
+  </lieferadresse>
+  <email>sast1011@hs-karlsruhe.de</email> 
+  <vorname>Stephan</vorname> 
+  <nachname>Sauer</nachname> 
+  <kontonummer>1000</kontonummer> 
+  <bankleitzahl>2000</bankleitzahl> 
+  <passwort>webshop</passwort> 
+  <newsletter>70</newsletter> 
+  <erstellungsdatum>2010-10-28 15:00:00</erstellungsdatum> 
+</benutzer>

@@ -1,0 +1,30 @@
+http://localhost:8080/webshopREST/
+
+create artikel:
+
+<artikel>
+<bezeichnung>Strickjacke</bezeichnung>
+<preis>15.6</preis>
+<imsortiment>false</imsortiment>
+</artikel>
+
+update artikel:
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<artikel id="2">
+<artikelvarianten>
+<artikelvariante>http://localhost:8080/webshopREST/artikelverwaltung/artikel/4</artikelvariante>
+<artikelvariante>http://localhost:8080/webshopREST/artikelverwaltung/artikel/5</artikelvariante>
+<artikelvariante>http://localhost:8080/webshopREST/artikelverwaltung/artikel/6</artikelvariante>
+</artikelvarianten>
+<kategorien>
+<kategorie>http://localhost:8080/webshopREST/artikelverwaltung/kategorie/4</kategorie>
+</kategorien>
+<produktbewertungen>
+<produktbewertung>http://localhost:8080/webshopREST/benutzerverwaltung/produktbewertung/1</produktbewertung>
+<produktbewertung>http://localhost:8080/webshopREST/benutzerverwaltung/produktbewertung/3</produktbewertung>
+</produktbewertungen>
+<bezeichnung>hose</bezeichnung>
+<preis>50.0</preis>
+<imsortiment>false</imsortiment>
+</artikel>

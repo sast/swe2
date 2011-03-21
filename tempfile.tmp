@@ -1,0 +1,11 @@
+# Keine JNDI-Resource, da Hibernate Console kein Appserver,
+# sondern ein "Fat Client" aus Sicht des DB-Systems ist
+hibernate.datasource =
+
+# Kein JTA-Transaction Manager wie bei JBoss
+hibernate.transaction.manager_lookup_class =
+
+# Kein Caching der Query-Resultate
+hibernate.cache.use_query_cache = false
+
+hibernate.cache.use_second_level_cache = false

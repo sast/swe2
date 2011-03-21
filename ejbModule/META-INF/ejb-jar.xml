@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<ejb-jar xmlns="http://java.sun.com/xml/ns/javaee"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd"
+	     version="3.1">
+	<display-name>Beispiel</display-name>
+	
+	<!--
+	<enterprise-beans>
+		<session>
+			<ejb-name>Kundenverwaltung</ejb-name>
+			<env-entry>
+				<env-entry-name>maxRabatt</env-entry-name>
+				<env-entry-type>java.lang.Float</env-entry-type>
+				<env-entry-value>0.15</env-entry-value>
+			</env-entry>
+		</session>
+	</enterprise-beans>
+	-->
+	
+	<!--
+	<assembly-descriptor>
+		<application-exception>
+				<exception-class>
+					javax.validation.ConstraintViolationException
+				</exception-class>
+			<rollback>true</rollback>
+		</application-exception>
+	</assembly-descriptor>
+	-->
+	
+	<assembly-descriptor>
+		<!-- Default Interceptor wird auf alle Session Beans angewandt -->
+		<!-- In Produktion abschalten, d.h. auskommentieren -->
+		<interceptor-binding>
+			<ejb-name>*</ejb-name>
+			<interceptor-class>
+				de.webshop.util.LoggingInterceptor
+			</interceptor-class>
+		</interceptor-binding>
+	</assembly-descriptor>
+</ejb-jar>
